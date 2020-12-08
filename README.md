@@ -2,6 +2,7 @@
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。
 2020/12/09時点でPython実装のある以下3機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
+![suwkm-avmbx](https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif)<br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
 ![z9e49-wa894](https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif)<br>
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
