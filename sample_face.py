@@ -83,7 +83,7 @@ def main():
             break
 
         # 画面反映 #############################################################
-        cv.imshow('MediaPipe Hand Demo', debug_image)
+        cv.imshow('MediaPipe Face Mesh Demo', debug_image)
 
     cap.release()
     cv.destroyAllWindows()
