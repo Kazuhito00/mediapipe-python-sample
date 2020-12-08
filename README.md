@@ -1,9 +1,12 @@
 # mediapipe-python-sample
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。
 2020/12/09時点でPython実装のある以下3機能について用意しています。
-* [Hands](https://google.github.io/mediapipe/solutions/hands)
-* [Pose](https://google.github.io/mediapipe/solutions/pose)
-* [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)
+* [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
+![k2vp8-hgeff](https://user-images.githubusercontent.com/37477845/101512488-679f6180-39be-11eb-8c44-92305c4f852d.gif)<br>
+* [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
+![z9e49-wa894](https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif)<br>
+* [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
+![8w6n9-lavib](https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif)
 
 # Requirement 
 * mediapipe 0.8.0 or later
@@ -52,4 +55,6 @@ python sample_pose.py
 高橋かずひと(https://twitter.com/KzhtTkhs)
  
 # License 
-mediapipe-python-sample is under [Apache-2.0 License](LICENSE).<br>
+mediapipe-python-sample is under [Apache-2.0 License](LICENSE).
+
+また、女性の画像は[フリー素材ぱくたそ](https://www.pakutaso.com)様の写真を利用しています。
