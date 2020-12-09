@@ -127,6 +127,7 @@ def calc_palm_moment(image, landmarks):
         if index == 17:  # 小指：付け根
             palm_array = np.append(palm_array, landmark_point, axis=0)
     M = cv.moments(palm_array)
+    cx, xy = 0, 0
     if M['m00'] != 0:
         cx = int(M['m10'] / M['m00'])
         cy = int(M['m01'] / M['m00'])
