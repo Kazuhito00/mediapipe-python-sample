@@ -4,6 +4,7 @@ import copy
 import argparse
 
 import cv2 as cv
+import numpy as np
 import mediapipe as mp
 
 from utils import CvFpsCalc
@@ -25,6 +26,8 @@ def get_args():
                         type=int,
                         default=0.5)
 
+    parser.add_argument('--use_brect', action='store_true')
+
     args = parser.parse_args()
 
     return args
@@ -41,6 +44,8 @@ def main():
     min_detection_confidence = args.min_detection_confidence
     min_tracking_confidence = args.min_tracking_confidence
 
+    use_brect = args.use_brect
+
     # カメラ準備 ###############################################################
     cap = cv.VideoCapture(cap_device)
     cap.set(cv.CAP_PROP_FRAME_WIDTH, cap_width)
@@ -54,7 +59,7 @@ def main():
     )
 
     # FPS計測モジュール ########################################################
-    cvFpsCalc = CvFpsCalc()
+    cvFpsCalc = CvFpsCalc(buffer_len=10)
 
     while True:
         display_fps = cvFpsCalc.get()
@@ -63,6 +68,7 @@ def main():
         ret, image = cap.read()
         if not ret:
             break
+        image = cv.flip(image, 1)  # ミラー表示
         debug_image = copy.deepcopy(image)
 
         # 検出実施 #############################################################
@@ -72,7 +78,11 @@ def main():
         # 描画 ################################################################
         if results.multi_face_landmarks is not None:
             for face_landmarks in results.multi_face_landmarks:
+                # 外接矩形の計算
+                brect = calc_bounding_rect(debug_image, face_landmarks)
+                # 描画
                 debug_image = draw_landmarks(debug_image, face_landmarks)
+                debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
         cv.putText(debug_image, "FPS:" + str(display_fps), (10, 30),
                    cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255, 0), 2, cv.LINE_AA)
@@ -87,6 +97,24 @@ def main():
 
     cap.release()
     cv.destroyAllWindows()
+
+
+def calc_bounding_rect(image, landmarks):
+    image_width, image_height = image.shape[1], image.shape[0]
+
+    landmark_array = np.empty((0, 2), int)
+
+    for _, landmark in enumerate(landmarks.landmark):
+        landmark_x = min(int(landmark.x * image_width), image_width - 1)
+        landmark_y = min(int(landmark.y * image_height), image_height - 1)
+
+        landmark_point = [np.array((landmark_x, landmark_y))]
+
+        landmark_array = np.append(landmark_array, landmark_point, axis=0)
+
+    x, y, w, h = cv.boundingRect(landmark_array)
+
+    return [x, y, x + w, y + h]
 
 
 def draw_landmarks(image, landmarks):
@@ -108,13 +136,13 @@ def draw_landmarks(image, landmarks):
     if len(landmark_point) > 0:
         # 参考：https://github.com/tensorflow/tfjs-models/blob/master/facemesh/mesh_map.jpg
 
-        # 右眉毛(55：内側、46：外側)
+        # 左眉毛(55：内側、46：外側)
         cv.line(image, landmark_point[55], landmark_point[65], (0, 255, 0), 2)
         cv.line(image, landmark_point[65], landmark_point[52], (0, 255, 0), 2)
         cv.line(image, landmark_point[52], landmark_point[53], (0, 255, 0), 2)
         cv.line(image, landmark_point[53], landmark_point[46], (0, 255, 0), 2)
 
-        # 左眉毛(285：内側、276：外側)
+        # 右眉毛(285：内側、276：外側)
         cv.line(image, landmark_point[285], landmark_point[295], (0, 255, 0),
                 2)
         cv.line(image, landmark_point[295], landmark_point[282], (0, 255, 0),
@@ -124,7 +152,7 @@ def draw_landmarks(image, landmarks):
         cv.line(image, landmark_point[283], landmark_point[276], (0, 255, 0),
                 2)
 
-        # 右目 (133：目頭、246：目尻)
+        # 左目 (133：目頭、246：目尻)
         cv.line(image, landmark_point[133], landmark_point[173], (0, 255, 0),
                 2)
         cv.line(image, landmark_point[173], landmark_point[157], (0, 255, 0),
@@ -155,7 +183,7 @@ def draw_landmarks(image, landmarks):
         cv.line(image, landmark_point[155], landmark_point[133], (0, 255, 0),
                 2)
 
-        # 左目 (362：目頭、466：目尻)
+        # 右目 (362：目頭、466：目尻)
         cv.line(image, landmark_point[362], landmark_point[398], (0, 255, 0),
                 2)
         cv.line(image, landmark_point[398], landmark_point[384], (0, 255, 0),
@@ -186,7 +214,7 @@ def draw_landmarks(image, landmarks):
         cv.line(image, landmark_point[382], landmark_point[362], (0, 255, 0),
                 2)
 
-        # 口 (308：左端、78：右端)
+        # 口 (308：右端、78：左端)
         cv.line(image, landmark_point[308], landmark_point[415], (0, 255, 0),
                 2)
         cv.line(image, landmark_point[415], landmark_point[310], (0, 255, 0),
@@ -216,6 +244,15 @@ def draw_landmarks(image, landmarks):
                 2)
         cv.line(image, landmark_point[324], landmark_point[308], (0, 255, 0),
                 2)
+
+    return image
+
+
+def draw_bounding_rect(use_brect, image, brect):
+    if use_brect:
+        # 外接矩形
+        cv.rectangle(image, (brect[0], brect[1]), (brect[2], brect[3]),
+                     (0, 255, 0), 2)
 
     return image
 
