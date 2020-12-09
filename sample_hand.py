@@ -165,6 +165,7 @@ def draw_landmarks(image, cx, cy, landmarks, handedness):
 
         landmark_x = min(int(landmark.x * image_width), image_width - 1)
         landmark_y = min(int(landmark.y * image_height), image_height - 1)
+        # landmark_z = landmark.z
 
         landmark_point.append((landmark_x, landmark_y))
 
@@ -253,6 +254,9 @@ def draw_landmarks(image, cx, cy, landmarks, handedness):
 
     # 重心 + 左右
     if len(landmark_point) > 0:
+        # handedness.classification[0].index
+        # handedness.classification[0].score
+
         cv.circle(image, (cx, cy), 12, (0, 255, 0), 2)
         cv.putText(image, handedness.classification[0].label[0],
                    (cx - 6, cy + 6), cv.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0),
