@@ -28,6 +28,9 @@ python sample_hand.py
 ```bash
 python sample_pose.py
 ```
+```bash
+python sample_all.py
+```
 デモ実行時には、以下のオプションが指定可能です。
 
 * --device<br>
