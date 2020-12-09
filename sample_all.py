@@ -104,9 +104,11 @@ def main():
         # 検出実施 #############################################################
         image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
+        image.flags.writeable = False
         hands_results = hands.process(image)
         face_results = face_mesh.process(image)
         pose_results = pose.process(image)
+        image.flags.writeable = True
 
         # Face Mesh ###########################################################
         if face_results.multi_face_landmarks is not None:
