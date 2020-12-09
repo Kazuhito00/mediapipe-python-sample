@@ -45,6 +45,9 @@ python sample_pose.py
 * --min_tracking_confidence<br>
 トラッキング信頼値の閾値<br>
 デフォルト：0.5
+* --use_brect<br>
+外接矩形を描画するか否か<br>
+デフォルト：指定なし
 
 # Reference
 * [MediaPipe](https://github.com/google/mediapipe)
