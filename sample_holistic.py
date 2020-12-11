@@ -129,7 +129,7 @@ def main():
             break
 
         # 画面反映 #############################################################
-        cv.imshow('MediaPipe Demo', debug_image)
+        cv.imshow('MediaPipe Holistic Demo', debug_image)
 
     cap.release()
     cv.destroyAllWindows()
