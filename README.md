@@ -1,12 +1,14 @@
 # mediapipe-python-sample
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。<br>
-2020/12/09時点でPython実装のある以下3機能について用意しています。
+2020/12/11時点でPython実装のある以下4機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
 ![suwkm-avmbx](https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif)<br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
 ![z9e49-wa894](https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif)<br>
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
-![8w6n9-lavib](https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif)
+![8w6n9-lavib](https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif)<br>
+* [Holistic](https://google.github.io/mediapipe/solutions/holistic)<br>
+![4xbuq-2o9kx](https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif)
 
 # Requirement 
 * mediapipe 0.8.1 or later
