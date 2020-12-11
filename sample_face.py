@@ -17,6 +17,7 @@ def get_args():
     parser.add_argument("--width", help='cap width', type=int, default=960)
     parser.add_argument("--height", help='cap height', type=int, default=540)
 
+    parser.add_argument("--max_num_faces", type=int, default=1)
     parser.add_argument("--min_detection_confidence",
                         help='min_detection_confidence',
                         type=float,
@@ -41,6 +42,7 @@ def main():
     cap_width = args.width
     cap_height = args.height
 
+    max_num_faces = args.max_num_faces
     min_detection_confidence = args.min_detection_confidence
     min_tracking_confidence = args.min_tracking_confidence
 
@@ -54,6 +56,7 @@ def main():
     # モデルロード #############################################################
     mp_face_mesh = mp.solutions.face_mesh
     face_mesh = mp_face_mesh.FaceMesh(
+        max_num_faces=max_num_faces,
         min_detection_confidence=min_detection_confidence,
         min_tracking_confidence=min_tracking_confidence,
     )
