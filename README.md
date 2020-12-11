@@ -9,7 +9,7 @@
 ![8w6n9-lavib](https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif)
 
 # Requirement 
-* mediapipe 0.8.0 or later
+* mediapipe 0.8.1 or later
 * OpenCV 3.4.2 or later
 
 mediapipeはpipでインストールできます。
@@ -29,7 +29,7 @@ python sample_hand.py
 python sample_pose.py
 ```
 ```bash
-python sample_all.py
+python sample_holistic.py
 ```
 デモ実行時には、以下のオプションが指定可能です。
 
@@ -53,7 +53,7 @@ python sample_all.py
 デフォルト：指定なし
 
 # ToDo
-- [ ] [Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)
+- [x] [Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)
 
 # Reference
 * [MediaPipe](https://github.com/google/mediapipe)
