@@ -53,7 +53,7 @@ python sample_all.py
 デフォルト：指定なし
 
 # ToDo
-- [ ] [Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加
+- [ ] [Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)
 
 # Reference
 * [MediaPipe](https://github.com/google/mediapipe)
