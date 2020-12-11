@@ -52,6 +52,9 @@ python sample_all.py
 外接矩形を描画するか否か<br>
 デフォルト：指定なし
 
+# ToDo
+- [ ] [Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加
+
 # Reference
 * [MediaPipe](https://github.com/google/mediapipe)
 
