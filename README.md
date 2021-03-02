@@ -56,6 +56,7 @@ python sample_holistic.py
 
 # ToDo
 - [x] ~~[Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)~~
+- [ ] Poseのz座標表示お試し (mediapipe 0.8.3)
 
 # Reference
 * [MediaPipe](https://github.com/google/mediapipe)
