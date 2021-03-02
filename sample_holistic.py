@@ -96,7 +96,8 @@ def main():
             # 外接矩形の計算
             brect = calc_bounding_rect(debug_image, pose_landmarks)
             # 描画
-            debug_image = draw_pose_landmarks(debug_image, pose_landmarks)
+            debug_image = draw_pose_landmarks(debug_image, pose_landmarks,
+                                              upper_body_only)
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
         # Hands ###############################################################
@@ -110,7 +111,8 @@ def main():
             brect = calc_bounding_rect(debug_image, left_hand_landmarks)
             # 描画
             debug_image = draw_hands_landmarks(debug_image, cx, cy,
-                                               left_hand_landmarks, 'R')
+                                               left_hand_landmarks,
+                                               upper_body_only, 'R')
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
         # 右手
         if right_hand_landmarks is not None:
@@ -120,7 +122,8 @@ def main():
             brect = calc_bounding_rect(debug_image, right_hand_landmarks)
             # 描画
             debug_image = draw_hands_landmarks(debug_image, cx, cy,
-                                               right_hand_landmarks, 'L')
+                                               right_hand_landmarks,
+                                               upper_body_only, 'L')
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
         cv.putText(debug_image, "FPS:" + str(display_fps), (10, 30),
@@ -188,7 +191,12 @@ def calc_bounding_rect(image, landmarks):
     return [x, y, x + w, y + h]
 
 
-def draw_hands_landmarks(image, cx, cy, landmarks, handedness_str='R'):
+def draw_hands_landmarks(image,
+                         cx,
+                         cy,
+                         landmarks,
+                         upper_body_only,
+                         handedness_str='R'):
     image_width, image_height = image.shape[1], image.shape[0]
 
     landmark_point = []
@@ -200,7 +208,7 @@ def draw_hands_landmarks(image, cx, cy, landmarks, handedness_str='R'):
 
         landmark_x = min(int(landmark.x * image_width), image_width - 1)
         landmark_y = min(int(landmark.y * image_height), image_height - 1)
-        # landmark_z = landmark.z
+        landmark_z = landmark.z
 
         landmark_point.append((landmark_x, landmark_y))
 
@@ -251,6 +259,12 @@ def draw_hands_landmarks(image, cx, cy, landmarks, handedness_str='R'):
         if index == 20:  # 小指：指先
             cv.circle(image, (landmark_x, landmark_y), 5, (0, 255, 0), 2)
             cv.circle(image, (landmark_x, landmark_y), 12, (0, 255, 0), 2)
+
+        if not upper_body_only:
+            cv.putText(image, "z:" + str(round(landmark_z, 3)),
+                       (landmark_x - 10, landmark_y - 10),
+                       cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1,
+                       cv.LINE_AA)
 
     # 接続線
     if len(landmark_point) > 0:
@@ -307,6 +321,7 @@ def draw_face_landmarks(image, landmarks):
 
         landmark_x = min(int(landmark.x * image_width), image_width - 1)
         landmark_y = min(int(landmark.y * image_height), image_height - 1)
+        landmark_z = landmark.z
 
         landmark_point.append((landmark_x, landmark_y))
 
@@ -427,7 +442,7 @@ def draw_face_landmarks(image, landmarks):
     return image
 
 
-def draw_pose_landmarks(image, landmarks, visibility_th=0.5):
+def draw_pose_landmarks(image, landmarks, upper_body_only, visibility_th=0.5):
     image_width, image_height = image.shape[1], image.shape[0]
 
     landmark_point = []
@@ -435,6 +450,7 @@ def draw_pose_landmarks(image, landmarks, visibility_th=0.5):
     for index, landmark in enumerate(landmarks.landmark):
         landmark_x = min(int(landmark.x * image_width), image_width - 1)
         landmark_y = min(int(landmark.y * image_height), image_height - 1)
+        landmark_z = landmark.z
         landmark_point.append([landmark.visibility, (landmark_x, landmark_y)])
 
         if landmark.visibility < visibility_th:
@@ -506,6 +522,12 @@ def draw_pose_landmarks(image, landmarks, visibility_th=0.5):
             cv.circle(image, (landmark_x, landmark_y), 5, (0, 255, 0), 2)
         if index == 32:  # 左つま先
             cv.circle(image, (landmark_x, landmark_y), 5, (0, 255, 0), 2)
+
+        if not upper_body_only:
+            cv.putText(image, "z:" + str(round(landmark_z, 3)),
+                       (landmark_x - 10, landmark_y - 10),
+                       cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1,
+                       cv.LINE_AA)
 
     if len(landmark_point) > 0:
         # 右目

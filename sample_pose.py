@@ -83,7 +83,8 @@ def main():
             # 外接矩形の計算
             brect = calc_bounding_rect(debug_image, results.pose_landmarks)
             # 描画
-            debug_image = draw_landmarks(debug_image, results.pose_landmarks)
+            debug_image = draw_landmarks(debug_image, results.pose_landmarks,
+                                         upper_body_only)
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
         cv.putText(debug_image, "FPS:" + str(display_fps), (10, 30),
@@ -119,7 +120,7 @@ def calc_bounding_rect(image, landmarks):
     return [x, y, x + w, y + h]
 
 
-def draw_landmarks(image, landmarks, visibility_th=0.5):
+def draw_landmarks(image, landmarks, upper_body_only, visibility_th=0.5):
     image_width, image_height = image.shape[1], image.shape[0]
 
     landmark_point = []
@@ -127,6 +128,7 @@ def draw_landmarks(image, landmarks, visibility_th=0.5):
     for index, landmark in enumerate(landmarks.landmark):
         landmark_x = min(int(landmark.x * image_width), image_width - 1)
         landmark_y = min(int(landmark.y * image_height), image_height - 1)
+        landmark_z = landmark.z
         landmark_point.append([landmark.visibility, (landmark_x, landmark_y)])
 
         if landmark.visibility < visibility_th:
@@ -198,6 +200,12 @@ def draw_landmarks(image, landmarks, visibility_th=0.5):
             cv.circle(image, (landmark_x, landmark_y), 5, (0, 255, 0), 2)
         if index == 32:  # 左つま先
             cv.circle(image, (landmark_x, landmark_y), 5, (0, 255, 0), 2)
+
+        if not upper_body_only:
+            cv.putText(image, "z:" + str(round(landmark_z, 3)),
+                       (landmark_x - 10, landmark_y - 10),
+                       cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1,
+                       cv.LINE_AA)
 
     if len(landmark_point) > 0:
         # 右目
