@@ -25,26 +25,110 @@ pip install mediapipe
 
 # Demo
 デモの実行方法は以下です。
+#### Face Mesh
 ```bash
 python sample_facemesh.py
 ```
+* --device<br>
+カメラデバイス番号の指定<br>
+デフォルト：0
+* --width<br>
+カメラキャプチャ時の横幅<br>
+デフォルト：960
+* --height<br>
+カメラキャプチャ時の縦幅<br>
+デフォルト：540
+* --max_num_hands<br>
+最大手検出数<br>
+デフォルト：1
+* --min_detection_confidence<br>
+検出信頼値の閾値<br>
+デフォルト：0.5
+* --min_tracking_confidence<br>
+トラッキング信頼値の閾値<br>
+デフォルト：0.5
+* --use_brect<br>
+外接矩形を描画するか否か<br>
+デフォルト：指定なし
+#### Hands
 ```bash
 python sample_hand.py
 ```
+* --device<br>
+カメラデバイス番号の指定<br>
+デフォルト：0
+* --width<br>
+カメラキャプチャ時の横幅<br>
+デフォルト：960
+* --height<br>
+カメラキャプチャ時の縦幅<br>
+デフォルト：540
+* --max_num_faces<br>
+最大顔検出数<br>
+デフォルト：1
+* --min_detection_confidence<br>
+検出信頼値の閾値<br>
+デフォルト：0.7
+* --min_tracking_confidence<br>
+トラッキング信頼値の閾値<br>
+デフォルト：0.5
+* --use_brect<br>
+外接矩形を描画するか否か<br>
+デフォルト：指定なし
+#### Pose
 ```bash
 python sample_pose.py
 ```
+* --device<br>
+カメラデバイス番号の指定<br>
+デフォルト：0
+* --width<br>
+カメラキャプチャ時の横幅<br>
+デフォルト：960
+* --height<br>
+カメラキャプチャ時の縦幅<br>
+デフォルト：540
+* --upper_body_only<br>
+検出対象を上半身のみにするか ※指定した場合のz座標出力は未対応<br>
+デフォルト：指定なし
+* --min_detection_confidence<br>
+検出信頼値の閾値<br>
+デフォルト：0.5
+* --min_tracking_confidence<br>
+トラッキング信頼値の閾値<br>
+デフォルト：0.5
+* --use_brect<br>
+外接矩形を描画するか否か<br>
+デフォルト：指定なし
+#### Holistic
 ```bash
 python sample_holistic.py
 ```
+* --device<br>
+カメラデバイス番号の指定<br>
+デフォルト：0
+* --width<br>
+カメラキャプチャ時の横幅<br>
+デフォルト：960
+* --height<br>
+カメラキャプチャ時の縦幅<br>
+デフォルト：540
+* --upper_body_only<br>
+検出対象を上半身のみにするか ※指定した場合のz座標出力は未対応<br>
+デフォルト：指定なし
+* --min_detection_confidence<br>
+検出信頼値の閾値<br>
+デフォルト：0.5
+* --min_tracking_confidence<br>
+トラッキング信頼値の閾値<br>
+デフォルト：0.5
+* --use_brect<br>
+外接矩形を描画するか否か<br>
+デフォルト：指定なし
+#### Face Detection
 ```bash
 python sample_facedetection.py
 ```
-```bash
-python sample_objectron.py
-```
-デモ実行時には、以下のオプションが指定可能です。
-
 * --device<br>
 カメラデバイス番号の指定<br>
 デフォルト：0
@@ -56,13 +140,32 @@ python sample_objectron.py
 デフォルト：540
 * --min_detection_confidence<br>
 検出信頼値の閾値<br>
-デフォルト：0.5(sample_hand.pyのみ0.7)
+デフォルト：0.5
+#### Objectron
+```bash
+python sample_objectron.py
+```
+* --device<br>
+カメラデバイス番号の指定<br>
+デフォルト：0
+* --width<br>
+カメラキャプチャ時の横幅<br>
+デフォルト：960
+* --height<br>
+カメラキャプチャ時の縦幅<br>
+デフォルト：540
+* --static_image_mode<br>
+静止画像モード ※トラッキング無し<br>
+デフォルト：指定なし
+* --min_detection_confidence<br>
+検出信頼値の閾値<br>
+デフォルト：0.5
 * --min_tracking_confidence<br>
 トラッキング信頼値の閾値<br>
-デフォルト：0.5
-* --use_brect<br>
-外接矩形を描画するか否か<br>
-デフォルト：指定なし
+デフォルト：0.99
+* --model_name<br>
+検出対象(20201/03/03時点：'Shoe', 'Chair', 'Cup', 'Camera'の4種類)<br>
+デフォルト：Cup
 
 # ToDo
 - [x] ~~[Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)~~
