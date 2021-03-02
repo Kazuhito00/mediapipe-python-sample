@@ -1,6 +1,6 @@
 # mediapipe-python-sample
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。<br>
-2020/12/11時点でPython実装のある以下4機能について用意しています。
+2021/03/03時点でPython実装のある以下6機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
 ![suwkm-avmbx](https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif)<br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
@@ -8,10 +8,14 @@
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
 ![8w6n9-lavib](https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif)<br>
 * [Holistic](https://google.github.io/mediapipe/solutions/holistic)<br>
-![4xbuq-2o9kx](https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif)
+![4xbuq-2o9kx](https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif)<br>
+* [Face Detection](https://google.github.io/mediapipe/solutions/face_detection)<br>
+![12-01 MediaPipeFaceDetection](https://user-images.githubusercontent.com/37477845/109686899-0e625b00-7bc6-11eb-991e-7fbecfb841cf.gif)<br>
+* [Objectron](https://google.github.io/mediapipe/solutions/objectron)<br>
+![12-03 MediaPipeObjectron](https://user-images.githubusercontent.com/37477845/109686979-25a14880-7bc6-11eb-8290-4e87968f6044.gif)
 
 # Requirement 
-* mediapipe 0.8.1 or later
+* mediapipe 0.8.3 or later
 * OpenCV 3.4.2 or later
 
 mediapipeはpipでインストールできます。
@@ -22,7 +26,7 @@ pip install mediapipe
 # Demo
 デモの実行方法は以下です。
 ```bash
-python sample_face.py
+python sample_facemesh.py
 ```
 ```bash
 python sample_hand.py
@@ -32,6 +36,12 @@ python sample_pose.py
 ```
 ```bash
 python sample_holistic.py
+```
+```bash
+python sample_facedetection.py
+```
+```bash
+python sample_objectron.py
 ```
 デモ実行時には、以下のオプションが指定可能です。
 
@@ -56,9 +66,9 @@ python sample_holistic.py
 
 # ToDo
 - [x] ~~[Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)~~
-- [ ] Poseのz座標表示を追加 (mediapipe 0.8.3)
-- [ ] [Face Detection](https://google.github.io/mediapipe/solutions/face_detection)のサンプル追加 (mediapipe 0.8.3)
-- [ ] [Objectron](https://google.github.io/mediapipe/solutions/objectron)のサンプル追加 (mediapipe 0.8.3)
+- [x] ~~Poseのz座標表示を追加 (mediapipe 0.8.3)~~
+- [x] ~~[Face Detection](https://google.github.io/mediapipe/solutions/face_detection)のサンプル追加 (mediapipe 0.8.3)~~
+- [x] ~~[Objectron](https://google.github.io/mediapipe/solutions/objectron)のサンプル追加 (mediapipe 0.8.3)~~
 
 # Reference
 * [MediaPipe](https://github.com/google/mediapipe)
