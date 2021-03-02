@@ -56,7 +56,9 @@ python sample_holistic.py
 
 # ToDo
 - [x] ~~[Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)~~
-- [ ] Poseのz座標表示お試し (mediapipe 0.8.3)
+- [ ] Poseのz座標表示を追加 (mediapipe 0.8.3)
+- [ ] [Face Detection](https://google.github.io/mediapipe/solutions/face_detection)のサンプル追加 (mediapipe 0.8.3)
+- [ ] [Objectron](https://google.github.io/mediapipe/solutions/objectron)のサンプル追加 (mediapipe 0.8.3)
 
 # Reference
 * [MediaPipe](https://github.com/google/mediapipe)
