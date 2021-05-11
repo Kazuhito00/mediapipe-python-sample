@@ -17,7 +17,11 @@ def get_args():
     parser.add_argument("--width", help='cap width', type=int, default=960)
     parser.add_argument("--height", help='cap height', type=int, default=540)
 
-    parser.add_argument('--upper_body_only', action='store_true')
+    # parser.add_argument('--upper_body_only', action='store_true')  # 0.8.3 or less
+    parser.add_argument("--model_complexity",
+                        help='model_complexity(0,1(default),2)',
+                        type=int,
+                        default=1)
     parser.add_argument("--min_detection_confidence",
                         help='face mesh min_detection_confidence',
                         type=float,
@@ -42,7 +46,8 @@ def main():
     cap_width = args.width
     cap_height = args.height
 
-    upper_body_only = args.upper_body_only
+    # upper_body_only = args.upper_body_only
+    model_complexity = args.model_complexity
     min_detection_confidence = args.min_detection_confidence
     min_tracking_confidence = args.min_tracking_confidence
 
@@ -56,7 +61,8 @@ def main():
     # モデルロード #############################################################
     mp_holistic = mp.solutions.holistic
     holistic = mp_holistic.Holistic(
-        upper_body_only=upper_body_only,
+        # upper_body_only=upper_body_only,
+        model_complexity=model_complexity,
         min_detection_confidence=min_detection_confidence,
         min_tracking_confidence=min_tracking_confidence,
     )
@@ -96,8 +102,11 @@ def main():
             # 外接矩形の計算
             brect = calc_bounding_rect(debug_image, pose_landmarks)
             # 描画
-            debug_image = draw_pose_landmarks(debug_image, pose_landmarks,
-                                              upper_body_only)
+            debug_image = draw_pose_landmarks(
+                debug_image,
+                pose_landmarks,
+                # upper_body_only,
+            )
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
         # Hands ###############################################################
@@ -110,9 +119,14 @@ def main():
             # 外接矩形の計算
             brect = calc_bounding_rect(debug_image, left_hand_landmarks)
             # 描画
-            debug_image = draw_hands_landmarks(debug_image, cx, cy,
-                                               left_hand_landmarks,
-                                               upper_body_only, 'R')
+            debug_image = draw_hands_landmarks(
+                debug_image,
+                cx,
+                cy,
+                left_hand_landmarks,
+                # upper_body_only,
+                'R',
+            )
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
         # 右手
         if right_hand_landmarks is not None:
@@ -121,9 +135,14 @@ def main():
             # 外接矩形の計算
             brect = calc_bounding_rect(debug_image, right_hand_landmarks)
             # 描画
-            debug_image = draw_hands_landmarks(debug_image, cx, cy,
-                                               right_hand_landmarks,
-                                               upper_body_only, 'L')
+            debug_image = draw_hands_landmarks(
+                debug_image,
+                cx,
+                cy,
+                right_hand_landmarks,
+                # upper_body_only,
+                'L',
+            )
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
         cv.putText(debug_image, "FPS:" + str(display_fps), (10, 30),
@@ -191,12 +210,13 @@ def calc_bounding_rect(image, landmarks):
     return [x, y, x + w, y + h]
 
 
-def draw_hands_landmarks(image,
-                         cx,
-                         cy,
-                         landmarks,
-                         upper_body_only,
-                         handedness_str='R'):
+def draw_hands_landmarks(
+        image,
+        cx,
+        cy,
+        landmarks,
+        # upper_body_only,
+        handedness_str='R'):
     image_width, image_height = image.shape[1], image.shape[0]
 
     landmark_point = []
@@ -260,7 +280,8 @@ def draw_hands_landmarks(image,
             cv.circle(image, (landmark_x, landmark_y), 5, (0, 255, 0), 2)
             cv.circle(image, (landmark_x, landmark_y), 12, (0, 255, 0), 2)
 
-        if not upper_body_only:
+        # if not upper_body_only:
+        if True:
             cv.putText(image, "z:" + str(round(landmark_z, 3)),
                        (landmark_x - 10, landmark_y - 10),
                        cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1,
@@ -442,7 +463,12 @@ def draw_face_landmarks(image, landmarks):
     return image
 
 
-def draw_pose_landmarks(image, landmarks, upper_body_only, visibility_th=0.5):
+def draw_pose_landmarks(
+    image,
+    landmarks,
+    # upper_body_only,
+    visibility_th=0.5,
+):
     image_width, image_height = image.shape[1], image.shape[0]
 
     landmark_point = []
@@ -523,7 +549,8 @@ def draw_pose_landmarks(image, landmarks, upper_body_only, visibility_th=0.5):
         if index == 32:  # 左つま先
             cv.circle(image, (landmark_x, landmark_y), 5, (0, 255, 0), 2)
 
-        if not upper_body_only:
+        # if not upper_body_only:
+        if True:
             cv.putText(image, "z:" + str(round(landmark_z, 3)),
                        (landmark_x - 10, landmark_y - 10),
                        cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1,
