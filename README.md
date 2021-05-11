@@ -15,7 +15,7 @@
 ![12-03 MediaPipeObjectron](https://user-images.githubusercontent.com/37477845/109686979-25a14880-7bc6-11eb-8290-4e87968f6044.gif)
 
 # Requirement 
-* mediapipe 0.8.3 or later
+* mediapipe 0.8.4.2 or later
 * OpenCV 3.4.2 or later
 
 mediapipeはpipでインストールできます。
@@ -88,9 +88,10 @@ python sample_pose.py
 * --height<br>
 カメラキャプチャ時の縦幅<br>
 デフォルト：540
-* --upper_body_only<br>
-検出対象を上半身のみにするか ※指定した場合のz座標出力は未対応<br>
-デフォルト：指定なし
+* --model_complexity<br>
+モデルの複雑度(0:Lite 1:Full 2:Heavy)<br>
+※性能差は[Pose Estimation Quality](https://google.github.io/mediapipe/solutions/pose#pose-estimation-quality)を参照ください<br>
+デフォルト：1
 * --min_detection_confidence<br>
 検出信頼値の閾値<br>
 デフォルト：0.5
@@ -113,9 +114,10 @@ python sample_holistic.py
 * --height<br>
 カメラキャプチャ時の縦幅<br>
 デフォルト：540
-* --upper_body_only<br>
-検出対象を上半身のみにするか ※指定した場合のz座標出力は未対応<br>
-デフォルト：指定なし
+* --model_complexity<br>
+モデルの複雑度(0:Lite 1:Full 2:Heavy)<br>
+※性能差は[Pose Estimation Quality](https://google.github.io/mediapipe/solutions/pose#pose-estimation-quality)を参照ください<br>
+デフォルト：1
 * --min_detection_confidence<br>
 検出信頼値の閾値<br>
 デフォルト：0.5
