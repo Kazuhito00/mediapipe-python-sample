@@ -1,6 +1,6 @@
 # mediapipe-python-sample
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。<br>
-2021/03/03時点でPython実装のある以下6機能について用意しています。
+2021/05/12時点でPython実装のある以下6機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
 ![suwkm-avmbx](https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif)<br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
