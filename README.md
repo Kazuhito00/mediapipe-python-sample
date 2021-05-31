@@ -169,6 +169,10 @@ python sample_objectron.py
 検出対象(20201/03/03時点：'Shoe', 'Chair', 'Cup', 'Camera'の4種類)<br>
 デフォルト：Cup
 
+# For Raspberry Pi
+* [Raspberry Piで手軽にMediaPipeを楽しむ方法](https://zenn.dev/karaage0703/articles/63fed2a261096d)
+* [PINTO0309/mediapipe-bin](https://github.com/PINTO0309/mediapipe-bin)
+
 # ToDo
 - [x] ~~[Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)~~
 - [x] ~~Poseのz座標表示を追加 (mediapipe 0.8.3)~~
