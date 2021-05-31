@@ -170,8 +170,10 @@ python sample_objectron.py
 デフォルト：Cup
 
 # For Raspberry Pi
+以下のRaspberry Pi向けビルドを利用することで、Raspberry Pi上で本サンプルを試すことが出来ます。
 * [Raspberry Piで手軽にMediaPipeを楽しむ方法](https://zenn.dev/karaage0703/articles/63fed2a261096d)
-* [PINTO0309/mediapipe-bin](https://github.com/PINTO0309/mediapipe-bin)
+* [PINTO0309/mediapipe-bin](https://github.com/PINTO0309/mediapipe-bin)<br><img src="https://user-images.githubusercontent.com/33194443/120130242-a4774300-c200-11eb-8a74-d7f74384a4eb.gif" width="30%">
+
 
 # ToDo
 - [x] ~~[Holistic](https://google.github.io/mediapipe/solutions/holistic)のサンプル追加 (mediapipe 0.8.1)~~
