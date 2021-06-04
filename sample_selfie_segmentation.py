@@ -80,7 +80,7 @@ def main():
         results = selfie_segmentation.process(image)
 
         # 描画 ################################################################
-        mask = np.stack((results.segmentation_mask, ) * 3, axis=-1) > score_th
+        mask = np.stack((results.segmentation_mask, ) * 3, axis=-1) >= score_th
 
         if bg_image is None:
             bg_resize_image = np.zeros(image.shape, dtype=np.uint8)
