@@ -1,6 +1,6 @@
 # mediapipe-python-sample
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。<br>
-2021/05/12時点でPython実装のある以下6機能について用意しています。
+2021/06/04時点でPython実装のある以下7機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
 ![suwkm-avmbx](https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif)<br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
@@ -13,9 +13,11 @@
 ![12-01 MediaPipeFaceDetection](https://user-images.githubusercontent.com/37477845/109686899-0e625b00-7bc6-11eb-991e-7fbecfb841cf.gif)<br>
 * [Objectron](https://google.github.io/mediapipe/solutions/objectron)<br>
 ![12-03 MediaPipeObjectron](https://user-images.githubusercontent.com/37477845/109686979-25a14880-7bc6-11eb-8290-4e87968f6044.gif)
+* [Selfie Segmentation](https://google.github.io/mediapipe/solutions/selfie_segmentation)<br>
+![06-04 MediaPipeSelfieSegmentation](https://user-images.githubusercontent.com/37477845/120812014-8f473f00-c587-11eb-8ac8-944c25c2f264.gif)
 
 # Requirement 
-* mediapipe 0.8.4.2 or later
+* mediapipe 0.8.5 or later
 * OpenCV 3.4.2 or later
 
 mediapipeはpipでインストールできます。
@@ -168,6 +170,30 @@ python sample_objectron.py
 * --model_name<br>
 検出対象(20201/03/03時点：'Shoe', 'Chair', 'Cup', 'Camera'の4種類)<br>
 デフォルト：Cup
+#### Selfie Segmentation
+```bash
+python sample_selfie_segmentation
+```
+* --device<br>
+カメラデバイス番号の指定<br>
+デフォルト：0
+* --width<br>
+カメラキャプチャ時の横幅<br>
+デフォルト：960
+* --height<br>
+カメラキャプチャ時の縦幅<br>
+デフォルト：540
+* --model_selection<br>
+モデル種類指定<br>
+0：Generalモデル(256x256x1 出力)<br
+1：Landscapeモデル(144x256x1 出力)<br>
+デフォルト：0
+* --score_th<br>
+スコア閾値(閾値以上：人間、閾値未満：背景)<br>
+デフォルト：0.1
+* --bg_path<br>
+背景画像格納パス ※未指定時はグリーンバック<br>
+デフォルト：None
 
 # For Raspberry Pi
 以下のRaspberry Pi向けビルドを利用することで、Raspberry Pi上で本サンプルを試すことが出来ます。
