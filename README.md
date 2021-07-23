@@ -8,7 +8,7 @@
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
 <img src="https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif" width="45%"><br>
 * [Holistic](https://google.github.io/mediapipe/solutions/holistic)<br>
-<img src="https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126744111-a302819b-32c1-4b35-a762-d6f7f7f959b6.gif" width="45%"><br>
+<img src="https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126744354-d6307bb2-b720-4e8e-9896-146ee3e7ae94.gif" width="45%"><br>
 * [Face Detection](https://google.github.io/mediapipe/solutions/face_detection)<br>
 <img src="https://user-images.githubusercontent.com/37477845/109686899-0e625b00-7bc6-11eb-991e-7fbecfb841cf.gif" width="45%"><br>
 * [Objectron](https://google.github.io/mediapipe/solutions/objectron)<br>
