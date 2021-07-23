@@ -2,19 +2,19 @@
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。<br>
 2021/07/23時点でPython実装のある以下7機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
-![suwkm-avmbx](https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif)<br>
+<img src="https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif" width="45%"><br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
-![z9e49-wa894](https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif)<br>
+<img src="https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126742650-6ab0df29-a2f6-4bb8-8dbc-54db691135e6.gif" width="45%"><br>
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
-![8w6n9-lavib](https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif)<br>
+<img src="https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif" width="45%"><br>
 * [Holistic](https://google.github.io/mediapipe/solutions/holistic)<br>
-![4xbuq-2o9kx](https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif)<br>
+<img src="https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif" width="45%"><br>
 * [Face Detection](https://google.github.io/mediapipe/solutions/face_detection)<br>
-![12-01 MediaPipeFaceDetection](https://user-images.githubusercontent.com/37477845/109686899-0e625b00-7bc6-11eb-991e-7fbecfb841cf.gif)<br>
+<img src="https://user-images.githubusercontent.com/37477845/109686899-0e625b00-7bc6-11eb-991e-7fbecfb841cf.gif" width="45%"><br>
 * [Objectron](https://google.github.io/mediapipe/solutions/objectron)<br>
-![12-03 MediaPipeObjectron](https://user-images.githubusercontent.com/37477845/109686979-25a14880-7bc6-11eb-8290-4e87968f6044.gif)
+<img src="https://user-images.githubusercontent.com/37477845/109686979-25a14880-7bc6-11eb-8290-4e87968f6044.gif" width="45%"><br>
 * [Selfie Segmentation](https://google.github.io/mediapipe/solutions/selfie_segmentation)<br>
-![06-04 MediaPipeSelfieSegmentation](https://user-images.githubusercontent.com/37477845/120812014-8f473f00-c587-11eb-8ac8-944c25c2f264.gif)
+<img src="https://user-images.githubusercontent.com/37477845/120812014-8f473f00-c587-11eb-8ac8-944c25c2f264.gif" width="45%"><br>
 
 # Requirement 
 * mediapipe 0.8.6 or later
@@ -103,6 +103,9 @@ python sample_pose.py
 * --use_brect<br>
 外接矩形を描画するか否か<br>
 デフォルト：指定なし
+* --plot_world_landmark<br>
+World座標をmatplotlib表示する ※matplotlibを用いるため処理が重くなります<br>
+デフォルト：指定なし
 #### Holistic
 ```bash
 python sample_holistic.py
@@ -128,6 +131,9 @@ python sample_holistic.py
 デフォルト：0.5
 * --use_brect<br>
 外接矩形を描画するか否か<br>
+デフォルト：指定なし
+* --plot_world_landmark<br>
+World座標をmatplotlib表示する ※matplotlibを用いるため処理が重くなります<br>
 デフォルト：指定なし
 #### Face Detection
 ```bash
