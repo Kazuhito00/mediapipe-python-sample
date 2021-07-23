@@ -185,7 +185,7 @@ python sample_selfie_segmentation
 デフォルト：540
 * --model_selection<br>
 モデル種類指定<br>
-0：Generalモデル(256x256x1 出力)<br
+0：Generalモデル(256x256x1 出力)<br>
 1：Landscapeモデル(144x256x1 出力)<br>
 デフォルト：0
 * --score_th<br>
@@ -216,4 +216,4 @@ python sample_selfie_segmentation
 # License 
 mediapipe-python-sample is under [Apache-2.0 License](LICENSE).
 
-また、女性の画像は[フリー素材ぱくたそ](https://www.pakutaso.com)様の写真を利用しています。
+また、女性の画像、および背景画像は[フリー素材ぱくたそ](https://www.pakutaso.com)様の写真を利用しています。
