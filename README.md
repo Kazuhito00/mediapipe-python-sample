@@ -1,6 +1,6 @@
 # mediapipe-python-sample
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。<br>
-2021/06/04時点でPython実装のある以下7機能について用意しています。
+2021/07/23時点でPython実装のある以下7機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
 ![suwkm-avmbx](https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif)<br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
@@ -17,7 +17,7 @@
 ![06-04 MediaPipeSelfieSegmentation](https://user-images.githubusercontent.com/37477845/120812014-8f473f00-c587-11eb-8ac8-944c25c2f264.gif)
 
 # Requirement 
-* mediapipe 0.8.5 or later
+* mediapipe 0.8.6 or later
 * OpenCV 3.4.2 or later
 
 mediapipeはpipでインストールできます。
@@ -142,6 +142,9 @@ python sample_facedetection.py
 * --height<br>
 カメラキャプチャ時の縦幅<br>
 デフォルト：540
+* --model_selection<br>
+モデル選択(0：2m以内の検出に最適なモデル、1：5m以内の検出に最適なモデル)<br>
+デフォルト：0
 * --min_detection_confidence<br>
 検出信頼値の閾値<br>
 デフォルト：0.5
