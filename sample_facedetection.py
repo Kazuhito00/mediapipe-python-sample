@@ -17,6 +17,7 @@ def get_args():
     parser.add_argument("--width", help='cap width', type=int, default=960)
     parser.add_argument("--height", help='cap height', type=int, default=540)
 
+    parser.add_argument("--model_selection", type=int, default=0)
     parser.add_argument("--min_detection_confidence",
                         help='min_detection_confidence',
                         type=float,
@@ -37,6 +38,7 @@ def main():
     cap_width = args.width
     cap_height = args.height
 
+    model_selection = args.model_selection
     min_detection_confidence = args.min_detection_confidence
 
     use_brect = args.use_brect
@@ -49,7 +51,9 @@ def main():
     # モデルロード #############################################################
     mp_face_detection = mp.solutions.face_detection
     face_detection = mp_face_detection.FaceDetection(
-        min_detection_confidence=min_detection_confidence)
+        model_selection=model_selection,
+        min_detection_confidence=min_detection_confidence,
+    )
 
     # FPS計測モジュール ########################################################
     cvFpsCalc = CvFpsCalc(buffer_len=10)
@@ -92,13 +96,13 @@ def main():
 def draw_detection(image, detection):
     image_width, image_height = image.shape[1], image.shape[0]
 
-    print(detection)
-    print(detection.location_data.relative_keypoints[0])
-    print(detection.location_data.relative_keypoints[1])
-    print(detection.location_data.relative_keypoints[2])
-    print(detection.location_data.relative_keypoints[3])
-    print(detection.location_data.relative_keypoints[4])
-    print(detection.location_data.relative_keypoints[5])
+    #  print(detection)
+    #  print(detection.location_data.relative_keypoints[0])
+    #  print(detection.location_data.relative_keypoints[1])
+    #  print(detection.location_data.relative_keypoints[2])
+    #  print(detection.location_data.relative_keypoints[3])
+    #  print(detection.location_data.relative_keypoints[4])
+    #  print(detection.location_data.relative_keypoints[5])
 
     # バウンディングボックス
     bbox = detection.location_data.relative_bounding_box
