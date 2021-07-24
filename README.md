@@ -19,6 +19,7 @@
 # Requirement 
 * mediapipe 0.8.6 or later
 * OpenCV 3.4.2 or later
+* matplotlib 3.4.1 or later ※Pose/Holisticでplot_world_landmarkオプションを使用する場合のみ
 
 mediapipeはpipでインストールできます。
 ```bash
