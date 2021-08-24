@@ -1,10 +1,10 @@
 # mediapipe-python-sample
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。<br>
-2021/07/23時点でPython実装のある以下7機能について用意しています。
+2021/08/24時点でPython実装のある以下7機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
 <img src="https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif" width="45%"><br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
-<img src="https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126742650-6ab0df29-a2f6-4bb8-8dbc-54db691135e6.gif" width="45%"><br>
+<img src="https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126742650-6ab0df29-a2f6-4bb8-8dbc-54db691135e6.gif" width="45%"><br><img src="https://user-images.githubusercontent.com/37477845/130624523-4be1cb41-92b8-4003-a6b5-659ac364a181.gif" width="45%"><br>
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
 <img src="https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif" width="45%"><br>
 * [Holistic](https://google.github.io/mediapipe/solutions/holistic)<br>
@@ -17,7 +17,7 @@
 <img src="https://user-images.githubusercontent.com/37477845/120812014-8f473f00-c587-11eb-8ac8-944c25c2f264.gif" width="45%"><br>
 
 # Requirement 
-* mediapipe 0.8.6 or later
+* mediapipe 0.8.7 or later
 * OpenCV 3.4.2 or later
 * matplotlib 3.4.1 or later ※Pose/Holisticでplot_world_landmarkオプションを使用する場合のみ
 
@@ -100,6 +100,12 @@ python sample_pose.py
 デフォルト：0.5
 * --min_tracking_confidence<br>
 トラッキング信頼値の閾値<br>
+デフォルト：0.5
+* --enable_segmentation<br>
+人物セグメンテーションを有効化するか<br>
+デフォルト：指定なし
+* --segmentation_score_th<br>
+人物セグメンテーションの閾値<br>
 デフォルト：0.5
 * --use_brect<br>
 外接矩形を描画するか否か<br>
