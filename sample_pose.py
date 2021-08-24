@@ -28,7 +28,12 @@ def get_args():
                         default=0.5)
     parser.add_argument("--min_tracking_confidence",
                         help='min_tracking_confidence',
-                        type=int,
+                        type=float,
+                        default=0.5)
+    parser.add_argument('--enable_segmentation', action='store_true')
+    parser.add_argument("--segmentation_score_th",
+                        help='segmentation_score_threshold',
+                        type=float,
                         default=0.5)
 
     parser.add_argument('--use_brect', action='store_true')
@@ -51,6 +56,8 @@ def main():
     model_complexity = args.model_complexity
     min_detection_confidence = args.min_detection_confidence
     min_tracking_confidence = args.min_tracking_confidence
+    enable_segmentation = args.enable_segmentation
+    segmentation_score_th = args.segmentation_score_th
 
     use_brect = args.use_brect
     plot_world_landmark = args.plot_world_landmark
@@ -65,6 +72,7 @@ def main():
     pose = mp_pose.Pose(
         # upper_body_only=upper_body_only,
         model_complexity=model_complexity,
+        enable_segmentation=enable_segmentation,
         min_detection_confidence=min_detection_confidence,
         min_tracking_confidence=min_tracking_confidence,
     )
@@ -95,6 +103,13 @@ def main():
         results = pose.process(image)
 
         # 描画 ################################################################
+        if enable_segmentation and results.segmentation_mask is not None:
+            # セグメンテーション
+            mask = np.stack((results.segmentation_mask, ) * 3,
+                            axis=-1) > segmentation_score_th
+            bg_resize_image = np.zeros(image.shape, dtype=np.uint8)
+            bg_resize_image[:] = (0, 255, 0)
+            debug_image = np.where(mask, debug_image, bg_resize_image)
         if results.pose_landmarks is not None:
             # 外接矩形の計算
             brect = calc_bounding_rect(debug_image, results.pose_landmarks)
@@ -115,8 +130,13 @@ def main():
                     results.pose_world_landmarks,
                 )
 
+        # FPS表示
+        if enable_segmentation and results.segmentation_mask is not None:
+            fps_color = (255, 255, 255)
+        else:
+            fps_color = (0, 255, 0)
         cv.putText(debug_image, "FPS:" + str(display_fps), (10, 30),
-                   cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255, 0), 2, cv.LINE_AA)
+                   cv.FONT_HERSHEY_SIMPLEX, 1.0, fps_color, 2, cv.LINE_AA)
 
         # キー処理(ESC：終了) #################################################
         key = cv.waitKey(1)
@@ -392,7 +412,8 @@ def plot_world_landmarks(
     landmark_point = []
 
     for index, landmark in enumerate(landmarks.landmark):
-        landmark_point.append([landmark.visibility, (landmark.x, landmark.y, landmark.z)])
+        landmark_point.append(
+            [landmark.visibility, (landmark.x, landmark.y, landmark.z)])
 
     face_index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     right_arm_index_list = [11, 13, 15, 17, 19, 21]
