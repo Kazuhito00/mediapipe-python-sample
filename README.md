@@ -17,7 +17,7 @@
 <img src="https://user-images.githubusercontent.com/37477845/120812014-8f473f00-c587-11eb-8ac8-944c25c2f264.gif" width="45%"><br>
 
 # Requirement 
-* mediapipe 0.8.7 or later
+* mediapipe 0.8.7 or later<br>※旧バージョンのMediaPipeを使用する場合は[Tags](https://github.com/Kazuhito00/mediapipe-python-sample/tags)の旧コミット版を利用ください
 * OpenCV 3.4.2 or later
 * matplotlib 3.4.1 or later ※Pose/Holisticでplot_world_landmarkオプションを使用する場合のみ
 
