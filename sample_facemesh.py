@@ -86,8 +86,21 @@ def main():
             for face_landmarks in results.multi_face_landmarks:
                 # 外接矩形の計算
                 brect = calc_bounding_rect(debug_image, face_landmarks)
+                # 虹彩の外接円の計算
+                left_eye, right_eye = None, None
+                if refine_landmarks:
+                    left_eye, right_eye = calc_iris_lsingCircle(
+                        debug_image,
+                        face_landmarks,
+                    )
                 # 描画
-                debug_image = draw_landmarks(debug_image, face_landmarks)
+                debug_image = draw_landmarks(
+                    debug_image,
+                    face_landmarks,
+                    refine_landmarks,
+                    left_eye,
+                    right_eye,
+                )
                 debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
         cv.putText(debug_image, "FPS:" + str(display_fps), (10, 30),
@@ -123,7 +136,46 @@ def calc_bounding_rect(image, landmarks):
     return [x, y, x + w, y + h]
 
 
-def draw_landmarks(image, landmarks):
+def calc_iris_lsingCircle(image, landmarks):
+    image_width, image_height = image.shape[1], image.shape[0]
+    landmark_point = []
+
+    for index, landmark in enumerate(landmarks.landmark):
+        landmark_x = min(int(landmark.x * image_width), image_width - 1)
+        landmark_y = min(int(landmark.y * image_height), image_height - 1)
+
+        landmark_point.append((landmark_x, landmark_y))
+
+    left_eye_points = [
+        landmark_point[468],
+        landmark_point[469],
+        landmark_point[470],
+        landmark_point[471],
+        landmark_point[472],
+    ]
+    right_eye_points = [
+        landmark_point[473],
+        landmark_point[474],
+        landmark_point[475],
+        landmark_point[476],
+        landmark_point[477],
+    ]
+
+    left_eye_info = calc_min_enc_losingCircle(left_eye_points)
+    right_eye_info = calc_min_enc_losingCircle(right_eye_points)
+
+    return left_eye_info, right_eye_info
+
+
+def calc_min_enc_losingCircle(landmark_list):
+    center, radius = cv.minEnclosingCircle(np.array(landmark_list))
+    center = (int(center[0]), int(center[1]))
+    radius = int(radius)
+
+    return center, radius
+
+
+def draw_landmarks(image, landmarks, refine_landmarks, left_eye, right_eye):
     image_width, image_height = image.shape[1], image.shape[0]
 
     landmark_point = []
@@ -251,6 +303,32 @@ def draw_landmarks(image, landmarks):
                 2)
         cv.line(image, landmark_point[324], landmark_point[308], (0, 255, 0),
                 2)
+
+        if refine_landmarks:
+            # 虹彩：外接円
+            cv.circle(image, left_eye[0], left_eye[1], (0, 255, 0), 2)
+            cv.circle(image, right_eye[0], right_eye[1], (0, 255, 0), 2)
+
+            # 左目：中心
+            cv.circle(image, landmark_point[468], 2, (0, 0, 255), -1)
+            # 左目：目頭側
+            cv.circle(image, landmark_point[469], 2, (0, 0, 255), -1)
+            # 左目：上側
+            cv.circle(image, landmark_point[470], 2, (0, 0, 255), -1)
+            # 左目：目尻側
+            cv.circle(image, landmark_point[471], 2, (0, 0, 255), -1)
+            # 左目：下側
+            cv.circle(image, landmark_point[472], 2, (0, 0, 255), -1)
+            # 右目：中心
+            cv.circle(image, landmark_point[473], 2, (0, 0, 255), -1)
+            # 右目：目尻側
+            cv.circle(image, landmark_point[474], 2, (0, 0, 255), -1)
+            # 右目：上側
+            cv.circle(image, landmark_point[475], 2, (0, 0, 255), -1)
+            # 右目：目頭側
+            cv.circle(image, landmark_point[476], 2, (0, 0, 255), -1)
+            # 右目：下側
+            cv.circle(image, landmark_point[477], 2, (0, 0, 255), -1)
 
     return image
 
