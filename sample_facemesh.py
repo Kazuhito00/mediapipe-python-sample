@@ -18,6 +18,7 @@ def get_args():
     parser.add_argument("--height", help='cap height', type=int, default=540)
 
     parser.add_argument("--max_num_faces", type=int, default=1)
+    parser.add_argument('--refine_landmarks', action='store_true')
     parser.add_argument("--min_detection_confidence",
                         help='min_detection_confidence',
                         type=float,
@@ -43,6 +44,7 @@ def main():
     cap_height = args.height
 
     max_num_faces = args.max_num_faces
+    refine_landmarks = args.refine_landmarks
     min_detection_confidence = args.min_detection_confidence
     min_tracking_confidence = args.min_tracking_confidence
 
@@ -57,6 +59,7 @@ def main():
     mp_face_mesh = mp.solutions.face_mesh
     face_mesh = mp_face_mesh.FaceMesh(
         max_num_faces=max_num_faces,
+        refine_landmarks=refine_landmarks,
         min_detection_confidence=min_detection_confidence,
         min_tracking_confidence=min_tracking_confidence,
     )
@@ -131,6 +134,7 @@ def draw_landmarks(image, landmarks):
 
         landmark_x = min(int(landmark.x * image_width), image_width - 1)
         landmark_y = min(int(landmark.y * image_height), image_height - 1)
+        # landmark_z = landmark.z
 
         landmark_point.append((landmark_x, landmark_y))
 

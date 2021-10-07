@@ -18,6 +18,9 @@ def get_args():
     parser.add_argument("--height", help='cap height', type=int, default=540)
 
     # parser.add_argument('--upper_body_only', action='store_true')  # 0.8.3 or less
+    parser.add_argument('--unuse_smooth_landmarks', action='store_true')
+    parser.add_argument('--enable_segmentation', action='store_true')
+    parser.add_argument('--smooth_segmentation', action='store_true')
     parser.add_argument("--model_complexity",
                         help='model_complexity(0,1(default),2)',
                         type=int,
@@ -29,6 +32,10 @@ def get_args():
     parser.add_argument("--min_tracking_confidence",
                         help='face mesh min_tracking_confidence',
                         type=int,
+                        default=0.5)
+    parser.add_argument("--segmentation_score_th",
+                        help='segmentation_score_threshold',
+                        type=float,
                         default=0.5)
 
     parser.add_argument('--use_brect', action='store_true')
@@ -48,9 +55,13 @@ def main():
     cap_height = args.height
 
     # upper_body_only = args.upper_body_only
+    smooth_landmarks = not args.unuse_smooth_landmarks
+    enable_segmentation = args.enable_segmentation
+    smooth_segmentation = args.smooth_segmentation
     model_complexity = args.model_complexity
     min_detection_confidence = args.min_detection_confidence
     min_tracking_confidence = args.min_tracking_confidence
+    segmentation_score_th = args.segmentation_score_th
 
     use_brect = args.use_brect
     plot_world_landmark = args.plot_world_landmark
@@ -65,6 +76,9 @@ def main():
     holistic = mp_holistic.Holistic(
         # upper_body_only=upper_body_only,
         model_complexity=model_complexity,
+        smooth_landmarks=smooth_landmarks,
+        enable_segmentation=enable_segmentation,
+        smooth_segmentation=smooth_segmentation,
         min_detection_confidence=min_detection_confidence,
         min_tracking_confidence=min_tracking_confidence,
     )
@@ -107,6 +121,14 @@ def main():
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
         # Pose ###############################################################
+        if enable_segmentation and results.segmentation_mask is not None:
+            # セグメンテーション
+            mask = np.stack((results.segmentation_mask, ) * 3,
+                            axis=-1) > segmentation_score_th
+            bg_resize_image = np.zeros(image.shape, dtype=np.uint8)
+            bg_resize_image[:] = (0, 255, 0)
+            debug_image = np.where(mask, debug_image, bg_resize_image)
+
         pose_landmarks = results.pose_landmarks
         if pose_landmarks is not None:
             # 外接矩形の計算
@@ -164,8 +186,13 @@ def main():
             )
             debug_image = draw_bounding_rect(use_brect, debug_image, brect)
 
+        # FPS表示
+        if enable_segmentation and results.segmentation_mask is not None:
+            fps_color = (255, 255, 255)
+        else:
+            fps_color = (0, 255, 0)
         cv.putText(debug_image, "FPS:" + str(display_fps), (10, 30),
-                   cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255, 0), 2, cv.LINE_AA)
+                   cv.FONT_HERSHEY_SIMPLEX, 1.0, fps_color, 2, cv.LINE_AA)
 
         # キー処理(ESC：終了) #################################################
         key = cv.waitKey(1)
@@ -726,7 +753,8 @@ def plot_world_landmarks(
     landmark_point = []
 
     for index, landmark in enumerate(landmarks.landmark):
-        landmark_point.append([landmark.visibility, (landmark.x, landmark.y, landmark.z)])
+        landmark_point.append(
+            [landmark.visibility, (landmark.x, landmark.y, landmark.z)])
 
     face_index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     right_arm_index_list = [11, 13, 15, 17, 19, 21]
