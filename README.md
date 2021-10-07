@@ -6,7 +6,7 @@
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
 <img src="https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126742650-6ab0df29-a2f6-4bb8-8dbc-54db691135e6.gif" width="45%"><br><img src="https://user-images.githubusercontent.com/37477845/130624523-4be1cb41-92b8-4003-a6b5-659ac364a181.gif" width="45%"><br>
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
-<img src="https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif" width="45%"><br>
+<img src="https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/136407004-8aa0026a-80aa-4f3f-8b7c-37fb7e5bc753.gif" width="45%"><br>
 * [Holistic](https://google.github.io/mediapipe/solutions/holistic)<br>
 <img src="https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126744354-d6307bb2-b720-4e8e-9896-146ee3e7ae94.gif" width="45%"><br><img src="https://user-images.githubusercontent.com/37477845/136389144-6d8ef7cc-e970-4aff-9153-e1bb198c594e.gif" width="45%"><br>
 * [Face Detection](https://google.github.io/mediapipe/solutions/face_detection)<br>
