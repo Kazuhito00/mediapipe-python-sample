@@ -8,7 +8,7 @@
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
 <img src="https://user-images.githubusercontent.com/37477845/101512592-869df380-39be-11eb-8a80-241e272cc195.gif" width="45%"><br>
 * [Holistic](https://google.github.io/mediapipe/solutions/holistic)<br>
-<img src="https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126744354-d6307bb2-b720-4e8e-9896-146ee3e7ae94.gif" width="45%"><br>
+<img src="https://user-images.githubusercontent.com/37477845/101908209-1336f480-3bff-11eb-9f3f-5a3055821ebd.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126744354-d6307bb2-b720-4e8e-9896-146ee3e7ae94.gif" width="45%"><br><img src="https://user-images.githubusercontent.com/37477845/136389144-6d8ef7cc-e970-4aff-9153-e1bb198c594e.gif" width="45%"><br>
 * [Face Detection](https://google.github.io/mediapipe/solutions/face_detection)<br>
 <img src="https://user-images.githubusercontent.com/37477845/109686899-0e625b00-7bc6-11eb-991e-7fbecfb841cf.gif" width="45%"><br>
 * [Objectron](https://google.github.io/mediapipe/solutions/objectron)<br>
@@ -17,7 +17,7 @@
 <img src="https://user-images.githubusercontent.com/37477845/120812014-8f473f00-c587-11eb-8ac8-944c25c2f264.gif" width="45%"><br>
 
 # Requirement 
-* mediapipe 0.8.7 or later<br>※旧バージョンのMediaPipeを使用する場合は[Tags](https://github.com/Kazuhito00/mediapipe-python-sample/tags)の旧コミット版を利用ください
+* mediapipe 0.8.8 or later<br>※旧バージョンのMediaPipeを使用する場合は[Tags](https://github.com/Kazuhito00/mediapipe-python-sample/tags)の旧コミット版を利用ください
 * OpenCV 3.4.2 or later
 * matplotlib 3.4.1 or later ※Pose/Holisticでplot_world_landmarkオプションを使用する場合のみ
 
@@ -44,6 +44,9 @@ python sample_facemesh.py
 * --max_num_hands<br>
 最大手検出数<br>
 デフォルト：1
+* --refine_landmarks<br>
+[ATTENTION MESH MODEL](https://google.github.io/mediapipe/solutions/face_mesh#attention-mesh-model)を使用するか否か ※目と口周りのランドマークがより正確になる<br>
+デフォルト：指定なし
 * --min_detection_confidence<br>
 検出信頼値の閾値<br>
 デフォルト：0.5
@@ -135,6 +138,15 @@ python sample_holistic.py
 デフォルト：0.5
 * --min_tracking_confidence<br>
 トラッキング信頼値の閾値<br>
+デフォルト：0.5
+* --enable_segmentation<br>
+人物セグメンテーションを有効化するか<br>
+デフォルト：指定なし
+* --unuse_smooth_landmarks<br>
+人物セグメンテーションのスムース化を使用しない<br>
+デフォルト：指定なし
+* --segmentation_score_th<br>
+人物セグメンテーションの閾値<br>
 デフォルト：0.5
 * --use_brect<br>
 外接矩形を描画するか否か<br>
