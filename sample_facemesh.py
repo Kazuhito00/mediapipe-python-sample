@@ -89,7 +89,7 @@ def main():
                 # 虹彩の外接円の計算
                 left_eye, right_eye = None, None
                 if refine_landmarks:
-                    left_eye, right_eye = calc_iris_lsingCircle(
+                    left_eye, right_eye = calc_iris_min_enc_losingCircle(
                         debug_image,
                         face_landmarks,
                     )
@@ -136,7 +136,7 @@ def calc_bounding_rect(image, landmarks):
     return [x, y, x + w, y + h]
 
 
-def calc_iris_lsingCircle(image, landmarks):
+def calc_iris_min_enc_losingCircle(image, landmarks):
     image_width, image_height = image.shape[1], image.shape[0]
     landmark_point = []
 
