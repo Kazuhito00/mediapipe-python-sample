@@ -200,7 +200,7 @@ python sample_objectron.py
 デフォルト：Cup
 #### Selfie Segmentation
 ```bash
-python sample_selfie_segmentation
+python sample_selfie_segmentation.py
 ```
 * --device<br>
 カメラデバイス番号の指定<br>
