@@ -17,6 +17,11 @@ def get_args():
     parser.add_argument("--width", help='cap width', type=int, default=960)
     parser.add_argument("--height", help='cap height', type=int, default=540)
 
+    parser.add_argument("--model_complexity",
+                        help='model_complexity(0,1(default))',
+                        type=int,
+                        default=1)
+
     parser.add_argument("--max_num_hands", type=int, default=2)
     parser.add_argument("--min_detection_confidence",
                         help='min_detection_confidence',
@@ -28,6 +33,7 @@ def get_args():
                         default=0.5)
 
     parser.add_argument('--use_brect', action='store_true')
+    parser.add_argument('--plot_world_landmark', action='store_true')
 
     args = parser.parse_args()
 
@@ -42,11 +48,14 @@ def main():
     cap_width = args.width
     cap_height = args.height
 
+    model_complexity = args.model_complexity
+
     max_num_hands = args.max_num_hands
     min_detection_confidence = args.min_detection_confidence
     min_tracking_confidence = args.min_tracking_confidence
 
     use_brect = args.use_brect
+    plot_world_landmark = args.plot_world_landmark
 
     # カメラ準備 ###############################################################
     cap = cv.VideoCapture(cap_device)
@@ -56,6 +65,7 @@ def main():
     # モデルロード #############################################################
     mp_hands = mp.solutions.hands
     hands = mp_hands.Hands(
+        model_complexity=model_complexity,
         max_num_hands=max_num_hands,
         min_detection_confidence=min_detection_confidence,
         min_tracking_confidence=min_tracking_confidence,
@@ -63,6 +73,15 @@ def main():
 
     # FPS計測モジュール ########################################################
     cvFpsCalc = CvFpsCalc(buffer_len=10)
+
+    # World座標プロット ########################################################
+    if plot_world_landmark:
+        import matplotlib.pyplot as plt
+
+        fig = plt.figure()
+        r_ax = fig.add_subplot(121, projection="3d")
+        l_ax = fig.add_subplot(122, projection="3d")
+        fig.subplots_adjust(left=0.0, right=1, bottom=0, top=1)
 
     while True:
         display_fps = cvFpsCalc.get()
@@ -93,6 +112,16 @@ def main():
 
         cv.putText(debug_image, "FPS:" + str(display_fps), (10, 30),
                    cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255, 0), 2, cv.LINE_AA)
+
+        # World座標プロット ###################################################
+        if plot_world_landmark:
+            if results.multi_hand_world_landmarks is not None:
+                plot_world_landmarks(
+                    plt,
+                    [r_ax, l_ax],
+                    results.multi_hand_world_landmarks,
+                    results.multi_handedness,
+                )
 
         # キー処理(ESC：終了) #################################################
         key = cv.waitKey(1)
@@ -266,6 +295,105 @@ def draw_landmarks(image, cx, cy, landmarks, handedness):
                    2, cv.LINE_AA)  # label[0]:一文字目だけ
 
     return image
+
+
+def plot_world_landmarks(
+    plt,
+    ax_list,
+    multi_hands_landmarks,
+    multi_handedness,
+    visibility_th=0.5,
+):
+    ax_list[0].cla()
+    ax_list[0].set_xlim3d(-0.1, 0.1)
+    ax_list[0].set_ylim3d(-0.1, 0.1)
+    ax_list[0].set_zlim3d(-0.1, 0.1)
+    ax_list[1].cla()
+    ax_list[1].set_xlim3d(-0.1, 0.1)
+    ax_list[1].set_ylim3d(-0.1, 0.1)
+    ax_list[1].set_zlim3d(-0.1, 0.1)
+
+    for landmarks, handedness in zip(multi_hands_landmarks, multi_handedness):
+        handedness_index = 0
+        if handedness.classification[0].label == 'Left':
+            handedness_index = 0
+        elif handedness.classification[0].label == 'Right':
+            handedness_index = 1
+
+        landmark_point = []
+
+        for index, landmark in enumerate(landmarks.landmark):
+            landmark_point.append(
+                [landmark.visibility, (landmark.x, landmark.y, landmark.z)])
+
+        palm_list = [0, 1, 5, 9, 13, 17, 0]
+        thumb_list = [1, 2, 3, 4]
+        index_finger_list = [5, 6, 7, 8]
+        middle_finger_list = [9, 10, 11, 12]
+        ring_finger_list = [13, 14, 15, 16]
+        pinky_list = [17, 18, 19, 20]
+
+        # 掌
+        palm_x, palm_y, palm_z = [], [], []
+        for index in palm_list:
+            point = landmark_point[index][1]
+            palm_x.append(point[0])
+            palm_y.append(point[2])
+            palm_z.append(point[1] * (-1))
+
+        # 親指
+        thumb_x, thumb_y, thumb_z = [], [], []
+        for index in thumb_list:
+            point = landmark_point[index][1]
+            thumb_x.append(point[0])
+            thumb_y.append(point[2])
+            thumb_z.append(point[1] * (-1))
+
+        # 人差し指
+        index_finger_x, index_finger_y, index_finger_z = [], [], []
+        for index in index_finger_list:
+            point = landmark_point[index][1]
+            index_finger_x.append(point[0])
+            index_finger_y.append(point[2])
+            index_finger_z.append(point[1] * (-1))
+
+        # 中指
+        middle_finger_x, middle_finger_y, middle_finger_z = [], [], []
+        for index in middle_finger_list:
+            point = landmark_point[index][1]
+            middle_finger_x.append(point[0])
+            middle_finger_y.append(point[2])
+            middle_finger_z.append(point[1] * (-1))
+
+        # 薬指
+        ring_finger_x, ring_finger_y, ring_finger_z = [], [], []
+        for index in ring_finger_list:
+            point = landmark_point[index][1]
+            ring_finger_x.append(point[0])
+            ring_finger_y.append(point[2])
+            ring_finger_z.append(point[1] * (-1))
+
+        # 小指
+        pinky_x, pinky_y, pinky_z = [], [], []
+        for index in pinky_list:
+            point = landmark_point[index][1]
+            pinky_x.append(point[0])
+            pinky_y.append(point[2])
+            pinky_z.append(point[1] * (-1))
+
+        ax_list[handedness_index].plot(palm_x, palm_y, palm_z)
+        ax_list[handedness_index].plot(thumb_x, thumb_y, thumb_z)
+        ax_list[handedness_index].plot(index_finger_x, index_finger_y,
+                                       index_finger_z)
+        ax_list[handedness_index].plot(middle_finger_x, middle_finger_y,
+                                       middle_finger_z)
+        ax_list[handedness_index].plot(ring_finger_x, ring_finger_y,
+                                       ring_finger_z)
+        ax_list[handedness_index].plot(pinky_x, pinky_y, pinky_z)
+
+    plt.pause(.001)
+
+    return
 
 
 def draw_bounding_rect(use_brect, image, brect):
