@@ -1,8 +1,8 @@
 # mediapipe-python-sample
 [MediaPipe](https://github.com/google/mediapipe)のPythonパッケージのサンプルです。<br>
-2021/10/07時点でPython実装のある以下7機能について用意しています。
+2021/12/14時点でPython実装のある以下7機能について用意しています。
 * [Hands](https://google.github.io/mediapipe/solutions/hands)<br>
-<img src="https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif" width="45%"><br>
+<img src="https://user-images.githubusercontent.com/37477845/101514487-a59d8500-39c0-11eb-8346-d3c9ab917ea6.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/146001896-e6a4df4c-7e83-4449-a3af-876491e301ed.gif" width="45%"><br>
 * [Pose](https://google.github.io/mediapipe/solutions/pose)<br>
 <img src="https://user-images.githubusercontent.com/37477845/101512555-7ab23180-39be-11eb-814c-9fad59e0cf9a.gif" width="45%">　<img src="https://user-images.githubusercontent.com/37477845/126742650-6ab0df29-a2f6-4bb8-8dbc-54db691135e6.gif" width="45%"><br><img src="https://user-images.githubusercontent.com/37477845/130624523-4be1cb41-92b8-4003-a6b5-659ac364a181.gif" width="45%"><br>
 * [Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh)<br>
@@ -69,6 +69,8 @@ python sample_hand.py
 * --height<br>
 カメラキャプチャ時の縦幅<br>
 デフォルト：540
+* --model_complexity<br>
+モデルの複雑度(0:軽量 1:高精度)<br>
 * --max_num_faces<br>
 最大顔検出数<br>
 デフォルト：1
@@ -80,6 +82,9 @@ python sample_hand.py
 デフォルト：0.5
 * --use_brect<br>
 外接矩形を描画するか否か<br>
+デフォルト：指定なし
+* --plot_world_landmark<br>
+World座標をmatplotlib表示する ※matplotlibを用いるため処理が重くなります<br>
 デフォルト：指定なし
 #### Pose
 ```bash
