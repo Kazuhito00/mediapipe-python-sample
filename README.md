@@ -71,6 +71,7 @@ python sample_hand.py
 デフォルト：540
 * --model_complexity<br>
 モデルの複雑度(0:軽量 1:高精度)<br>
+デフォルト：1
 * --max_num_faces<br>
 最大顔検出数<br>
 デフォルト：1
