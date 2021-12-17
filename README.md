@@ -235,6 +235,7 @@ mediapipe-bin は、v0.8.4 および v0.8.5のバージョンが提供されて�
 mediapipe-python-sample は タグv0.8.4、v0.8.5のコードをご使用ください。<br>
 * [Raspberry Piで手軽にMediaPipeを楽しむ方法](https://zenn.dev/karaage0703/articles/63fed2a261096d)
 * [PINTO0309/mediapipe-bin](https://github.com/PINTO0309/mediapipe-bin)<br><img src="https://user-images.githubusercontent.com/33194443/120130242-a4774300-c200-11eb-8a74-d7f74384a4eb.gif" width="30%">
+<!-- [Raspberry PiでMediapipeをPythonで使用する【pipでインストール】](https://www.hiro877.com/entry/rasp-mp-pip-inst) -->
 
 
 # ToDo
