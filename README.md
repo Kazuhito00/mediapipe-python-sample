@@ -72,7 +72,7 @@ python sample_object_detection.py
 スコア閾値<br>
 デフォルト：0.5
 </details>
-<img src="https://github.com/user-attachments/assets/c006ff20-f3a4-413e-9f37-99f7faaa07bb" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/049776c6-bf7c-47df-982b-8d2e21e1f322" loading="lazy" width="250px">
 
 ### 画像分類（Image Classification）
 ```bash
@@ -105,7 +105,7 @@ python sample_image_classification.py
 結果出力数<br>
 デフォルト：5
 </details>
-<img src="https://github.com/user-attachments/assets/fd74c89c-9d03-4862-84dc-210a35208017" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/78b2c7ef-83b9-47e3-9849-70d16bd7f241" loading="lazy" width="250px">
 
 ### 画像セグメンテーション（Image Segmentation）
 ```bash
@@ -135,7 +135,7 @@ python sample_image_segmentation.py
   * 3:SelfieMulticlass(256x256)
   * 4:DeepLab-V3
 </details>
-<img src="https://github.com/user-attachments/assets/f28b6ece-26a5-4ddc-be70-1bd27dfefd3e" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/25c048b4-860c-45cc-a20a-5a0bc1756d7c" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/2f9dc84d-6c96-4c29-a5d3-553a75d1e89e" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/2033ba3b-3a66-437e-99d8-61fb38984b0b" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/93881e8c-cb19-4e14-b2f5-38bc061e481f" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/572f94d4-cbbc-4813-a408-f23f25abc1f9" loading="lazy" width="250px">
 
 
 ### インタラクティブ セグメンテーション（Interactive segmentation）
@@ -153,7 +153,7 @@ python sample_interactive_image_segmentation.py
 デフォルト：0<br>
   * 0:MagicTouch
 </details>
-<img src="https://github.com/user-attachments/assets/bccf93ba-c28d-4003-a643-65bc925f7a77" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/04f987b2-67e0-49f1-ad78-c5086d1bb6d4" loading="lazy" width="250px">
 
 ### 手検出（Hand Landmark detection）
 ```bash
@@ -188,7 +188,7 @@ python sample_hand_landmarks_detection.py
 ワールド座標表示<br>
 デフォルト：指定なし
 </details>
-<img src="https://github.com/user-attachments/assets/b6db982a-fb64-490b-abbf-6d15de141f1b" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/5fd708c0-4394-4a2d-b9fc-cab38b5278f0" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/0bc2d091-6eae-4029-9a4c-44ea151980fb" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/9946c203-93e9-4fac-9979-e1a752f67dc4" loading="lazy" width="250px">
 
 ### 手のジェスチャー認識（Gesture Recognition）
 ```bash
@@ -218,7 +218,7 @@ python sample_hand_gesture_recognition.py
 デフォルト：0<br>
   * 0:HandGestureClassifier
 </details>
-<img src="https://github.com/user-attachments/assets/02de2c97-e29a-4246-bf4a-70b91a09032b" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/844dd2cf-3bf7-4803-8782-8fc2eb9bc3dc" loading="lazy" width="250px">
 
 ### 画像の埋め込み表現（Image Embedding）
 ```bash
@@ -245,9 +245,10 @@ python sample_image_embedding.py
 特徴ベクトルを スカラー量子化によってバイトに量子化しない<br>
 デフォルト：指定なし
 </details>
-<img src="https://github.com/user-attachments/assets/cc93d136-4103-4120-9987-5a40de4d44ef" loading="lazy" width="500px"><br>
-<img src="https://github.com/user-attachments/assets/399eba04-00bf-47be-a728-0904d1863b6e" loading="lazy" width="500px"><br><br>
-<img src="https://github.com/user-attachments/assets/1a4c725e-f6c8-4ef8-9cb8-455b6c29fb82" loading="lazy" width="500px"><br><img src="https://github.com/user-attachments/assets/298291fe-eb51-48d2-bccf-14581cd8f1bd" loading="lazy" width="500px">
+<img src="https://github.com/user-attachments/assets/58fea0f1-83fa-448c-a36e-e9c760669a61" loading="lazy" width="500px"><br>
+<img src="https://github.com/user-attachments/assets/d1d0718c-4bf7-4151-ab51-bdb4806a264e" loading="lazy" width="500px"><br><br>
+<img src="https://github.com/user-attachments/assets/c1e5a632-2000-4949-9914-feeafac2ae17" loading="lazy" width="500px"><br>
+<img src="https://github.com/user-attachments/assets/7e1e788b-dd01-4521-bb54-fbddd2b698e3" loading="lazy" width="500px">
 
 ### 顔検出（Face Detection）
 ```bash
@@ -273,7 +274,7 @@ python sample_face_landmark_detection.py
 デフォルト：0<br>
   * 0:BlazeFace (short-range)
 </details>
-<img src="https://github.com/user-attachments/assets/6264ab0a-7d7a-4fe1-9aeb-0a8768499fde" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/10b79e31-7d0e-4d1e-9552-34b6ea9aa419" loading="lazy" width="250px">
 
 ### 顔のランドマーク検出（Face Landmark Detection）
 ```bash
@@ -308,7 +309,7 @@ python sample_face_landmark_detection.py
 顔変換行列を出力しない<br>
 デフォルト：指定なし
 </details>
-<img src="https://github.com/user-attachments/assets/c965b40b-9592-48c3-9fb0-d8b48050c0b2" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/e204f9f2-2284-4f5e-b26d-b846fc01e529" loading="lazy" width="250px">
 
 ### 顔のスタイル変換（Face Stylization）
 ```bash
@@ -336,7 +337,7 @@ python sample_face_stylization.py
   * 1:Color ink
   * 2:Oil painting
 </details>
-<img src="https://github.com/user-attachments/assets/113a4277-47e0-450d-adae-fb16c9a89590" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/c252903f-ba96-4c54-9c35-6c34cd2a01f0" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/ec5b8b93-b602-4c93-bdc5-0a3e3a15d0fe" loading="lazy" width="250px">
+<img src="https://github.com/user-attachments/assets/de975b72-7dab-4fe6-800e-99d68a42e939" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/3d224686-948a-48c2-bacb-52aa8285719e" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/9483b711-5c1c-40ca-8ae4-6e8f6beabb74" loading="lazy" width="250px">
 
 ### 姿勢推定（Pose Landmark Detection）
 ```bash
@@ -373,7 +374,7 @@ python sample_pose_landmark_detection.py
 ワールド座標表示を実施<br>
 デフォルト：指定なし
 </details>
-<img src="https://github.com/user-attachments/assets/a05f4b92-d99a-4098-ad5e-437dc2d8d6a6" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/89991b1f-5cae-4eff-a2b6-6f3580906ddc" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/f1a20ece-24f2-4312-a7ea-86f2704a7244" loading="lazy" width="250px"> 
+<img src="https://github.com/user-attachments/assets/54b752b9-8374-41d5-bd48-4cf76f803f18" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/9325e6e5-52df-4e8a-9e13-8c6d00d7ae37" loading="lazy" width="250px"> <img src="https://github.com/user-attachments/assets/ec001fa0-3042-4fb6-a653-633403e93691" loading="lazy" width="250px"> 
 
 ### テキスト分類（Text Classification）
 ```bash
@@ -391,7 +392,7 @@ python sample_text_classification.py
   * 0:BERT-classifier
   * 1:Average word embedding
 </details>
-<img src="https://github.com/user-attachments/assets/d37d68a6-3539-4cee-a744-8a9f14356228" loading="lazy" width="500px">
+<img src="https://github.com/user-attachments/assets/d40b6a51-b50a-4d5b-879f-0c5bfc1e62e5" loading="lazy" width="500px">
 
 ### テキストの埋め込み表現（Text Embedding）
 ```bash
@@ -417,7 +418,7 @@ python sample_text_embedding.py
 特徴ベクトルを スカラー量子化によってバイトに量子化する<br>
 デフォルト：指定なし
 </details>
-<img src="https://github.com/user-attachments/assets/ae23df66-d0bf-4794-a60a-7fe8ef6d7897" loading="lazy" width="500px">
+<img src="https://github.com/user-attachments/assets/6c82d941-98f3-4d91-8b9d-d2d7439de47e" loading="lazy" width="500px">
 
 ### テキスト言語分類（Language Detector）
 ```bash
@@ -434,7 +435,7 @@ python sample_text_language_detection.py
 デフォルト：0<br>
   * 0:Language Detector
 </details>
-<img src="https://github.com/user-attachments/assets/4b391e27-a96e-478d-aec7-1e9dfd668893" loading="lazy" width="500px">
+<img src="https://github.com/user-attachments/assets/537e341e-9534-4b4b-9204-d7c0ac31af21" loading="lazy" width="500px">
 
 ### 音分類（Audio Classification）
 ```bash
@@ -454,7 +455,7 @@ python sample_audio_classification.py
 結果出力数<br>
 デフォルト：5
 </details>
-<img src="https://github.com/user-attachments/assets/c247e7b8-2576-4a97-9d3f-876e14a05809" loading="lazy" width="500px">
+<img src="https://github.com/user-attachments/assets/a0f42d85-15e5-490f-b305-c99d063251af" loading="lazy" width="500px">
 
 # Reference
 * [google-ai-edge/mediapipe](https://github.com/google-ai-edge/mediapipe)
