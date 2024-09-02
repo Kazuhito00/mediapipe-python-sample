@@ -130,3 +130,7 @@ dmypy.json
 
 # bat
 *.bat
+
+# model
+model/*.tflite
+model/*.task

@@ -1,0 +1,6 @@
+tqdm
+requests
+mediapipe
+opencv-python
+scipy
+numpy==1.26.4
