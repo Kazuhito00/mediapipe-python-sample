@@ -252,7 +252,7 @@ python sample_image_embedding.py
 
 ### 顔検出（Face Detection）
 ```bash
-python sample_face_landmark_detection.py
+python sample_face_detection.py
 ```
 <details>
 <summary>コマンドライン引数オプション</summary>
