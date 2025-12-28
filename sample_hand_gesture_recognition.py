@@ -282,7 +282,8 @@ def draw_debug(
         # 各ランドマーク情報整理
         landmark_dict: Dict[int, List[Union[int, float]]] = {}
         for index, landmark in enumerate(hand_landmarks):
-            if landmark.visibility < 0 or landmark.presence < 0:
+            if (landmark.visibility is not None and landmark.visibility < 0) or \
+               (landmark.presence is not None and landmark.presence < 0):
                 continue
             landmark_x: int = min(int(landmark.x * image_width),
                                   image_width - 1)
