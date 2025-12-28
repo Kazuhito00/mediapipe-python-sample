@@ -130,7 +130,7 @@ def main() -> None:
 
         # 後処理
         category_mask = segmentation_result.category_mask
-        category_mask = category_mask.numpy_view()
+        category_mask = np.squeeze(category_mask.numpy_view())
 
         # 描画
         debug_image: Any = copy.deepcopy(frame)
@@ -172,10 +172,11 @@ def draw_debug(
         mask = np.where(category_mask == index, 0, 1)
 
         bg_image = np.zeros(image.shape, dtype=np.uint8)
+        color_index = index % len(color_table)
         bg_image[:] = (
-            color_table[index][2],
-            color_table[index][1],
-            color_table[index][0],
+            color_table[color_index][2],
+            color_table[color_index][1],
+            color_table[color_index][0],
         )
 
         # 重畳表示
